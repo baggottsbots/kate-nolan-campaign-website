@@ -28,7 +28,7 @@ document.documentElement.className+=' js';
 
     /* Highlight the current section in the menu */
     var links={};
-    nav.querySelectorAll('a').forEach(function(a){ links[a.getAttribute('href').slice(1)]=a; });
+    nav.querySelectorAll('a[href^="#"]').forEach(function(a){ links[a.getAttribute('href').slice(1)]=a; });
     var so=new IntersectionObserver(function(es){
       es.forEach(function(e){
         if(e.isIntersecting){
