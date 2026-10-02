@@ -53,6 +53,11 @@
   .nav a{font-weight:600;font-size:16px;text-decoration:none;color:var(--ink);padding:8px 12px;border-radius:8px;position:relative}
   .nav a::after{content:"";position:absolute;left:12px;right:12px;bottom:3px;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
   .nav a:hover::after,.nav a.on::after{transform:scaleX(1)}
+  .fb{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:50%;color:var(--navy);opacity:.6;text-decoration:none;transition:opacity .2s,color .2s,background-color .2s;flex:0 0 auto}
+  .fb .icon{font-size:19px;fill:currentColor;stroke:none}
+  .fb:hover{opacity:1;color:#1877f2;background:var(--sky-soft)}
+  .foot .fb{color:#dbe7f7;opacity:.75;border:1px solid rgba(185,200,227,.35)}
+  .foot .fb:hover{opacity:1;color:var(--gold);background:rgba(255,255,255,.06);border-color:var(--gold)}
   .menu{display:none;background:none;border:0;padding:8px;color:var(--navy);cursor:pointer;font-size:26px;line-height:0}
   .menu .x{display:none}
   .menu[aria-expanded="true"] .x{display:block}
