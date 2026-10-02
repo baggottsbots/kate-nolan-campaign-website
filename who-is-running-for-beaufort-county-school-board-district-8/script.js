@@ -23,12 +23,12 @@ document.documentElement.className+=' js';
   if('IntersectionObserver' in window){
     var io=new IntersectionObserver(function(es){
       es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-    },{threshold:.15, rootMargin:'0px 0px -6% 0px'});
+    },{threshold:.12, rootMargin:'0px 0px -6% 0px'});
     targets.forEach(function(t){ io.observe(t); });
 
     /* Highlight the current section in the menu */
     var links={};
-    nav.querySelectorAll('a').forEach(function(a){ links[a.getAttribute('href').slice(1)]=a; });
+    nav.querySelectorAll('a[href^="#"]').forEach(function(a){ links[a.getAttribute('href').slice(1)]=a; });
     var so=new IntersectionObserver(function(es){
       es.forEach(function(e){
         if(e.isIntersecting){
@@ -38,11 +38,10 @@ document.documentElement.className+=' js';
     },{rootMargin:'-45% 0px -50% 0px'});
     Object.keys(links).forEach(function(k){ var s=d.getElementById(k); if(s) so.observe(s); });
 
-    /* Mobile action bar: show after the hero, hide near the form and footer */
-    var bar=d.getElementById('bar'), heroSeen=true, formSeen=false, footSeen=false;
-    function setBar(){ bar.classList.toggle('show', !heroSeen && !formSeen && !footSeen); }
+    /* Mobile action bar: show after the hero, hide near the footer */
+    var bar=d.getElementById('bar'), heroSeen=true, footSeen=false;
+    function setBar(){ bar.classList.toggle('show', !heroSeen && !footSeen); }
     new IntersectionObserver(function(es){ heroSeen=es[0].isIntersecting; setBar(); }).observe(d.getElementById('top'));
-    new IntersectionObserver(function(es){ formSeen=es[0].isIntersecting; setBar(); }).observe(d.getElementById('involved'));
     new IntersectionObserver(function(es){ footSeen=es[0].isIntersecting; setBar(); }).observe(d.querySelector('.foot'));
   } else {
     targets.forEach(function(t){ t.classList.add('in'); });
@@ -78,26 +77,4 @@ document.documentElement.className+=' js';
       barText.firstChild.nodeValue='Thank you, District 8';
     }
   }catch(err){}
-
-  /* Video slot: reads data-video-url on #kate-video */
-  var frame=d.getElementById('kate-video'), btn=d.getElementById('playBtn'), label=d.getElementById('playLabel');
-  var url=(frame.getAttribute('data-video-url')||'').trim();
-  function player(u){
-    var m;
-    if((m=u.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{6,})/))){
-      return '<iframe src="https://www.youtube-nocookie.com/embed/'+m[1]+'?autoplay=1&rel=0" title="Kate Nolan campaign video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
-    }
-    if((m=u.match(/vimeo\.com\/(?:video\/)?(\d+)/))){
-      return '<iframe src="https://player.vimeo.com/video/'+m[1]+'?autoplay=1" title="Kate Nolan campaign video" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
-    }
-    return '<video src="'+u.replace(/"/g,'&quot;')+'" controls autoplay playsinline></video>';
-  }
-  if(url){
-    btn.removeAttribute('aria-disabled');
-    label.textContent="Play Kate's message";
-    btn.addEventListener('click', function(){
-      frame.classList.add('playing');
-      frame.insertAdjacentHTML('beforeend', player(url));
-    });
-  }
 })();
