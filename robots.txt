@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://baggottsbots.github.io/kate-nolan-campaign-website/sitemap.xml
+Sitemap: https://votekatenolan.com/sitemap.xml
