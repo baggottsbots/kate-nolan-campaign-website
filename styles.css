@@ -181,6 +181,11 @@
   .vote-in{padding-block:clamp(36px,5vw,60px);display:flex;align-items:center;justify-content:space-between;gap:26px;flex-wrap:wrap}
   .vote h2{font-size:clamp(1.9rem,4vw,3rem);color:var(--navy)}
   .vote p{font-weight:600;margin-top:8px;max-width:34em}
+  .vote h2{text-transform:uppercase;letter-spacing:.02em;font-weight:600;font-size:clamp(2.6rem,6vw,4.4rem);line-height:1}
+  .vote .vday{font-family:var(--serif);font-weight:600;text-transform:uppercase;letter-spacing:.02em;font-size:clamp(1.4rem,3vw,2.1rem);line-height:1.15;margin-top:12px;max-width:none}
+  .vote .early{display:inline-flex;align-items:center;flex-wrap:wrap;gap:6px 12px;background:var(--navy);color:#fff;border-radius:999px;padding:9px 20px;margin-top:14px;max-width:none;font-weight:700;text-transform:uppercase;letter-spacing:.04em;font-size:clamp(1rem,2vw,1.2rem);line-height:1.2;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .vote .early b{color:var(--gold);font-weight:700}
+  .vote .vnote{font-weight:600;margin-top:16px;max-width:34em;font-size:1rem}
 
   /* Footer */
   .foot{background:var(--navy-deep);color:#b9c8e3;padding:44px 0 36px;font-size:15px}
