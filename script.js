@@ -92,7 +92,7 @@ document.documentElement.className+=' js';
     }
     return '<video src="'+u.replace(/"/g,'&quot;')+'" controls autoplay playsinline></video>';
   }
-  if(url){
+  if(url && btn && label){
     btn.removeAttribute('aria-disabled');
     label.textContent="Play Kate's message";
     btn.addEventListener('click', function(){
