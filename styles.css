@@ -65,6 +65,14 @@
   .menu[aria-expanded="true"] .x{display:block}
   .menu[aria-expanded="true"] .m{display:none}
 
+  /* Early voting notice */
+  .early-notice{background:var(--sky-soft);border-bottom:1px solid var(--line);padding:20px 0}
+  .early-notice-in{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px 28px}
+  .early-notice h2{font-size:1.45rem;color:var(--navy)}
+  .early-notice p{font-size:16px;color:var(--muted);margin-top:5px}
+  .early-notice .early-count{display:inline-block;background:var(--navy);color:#fff;border-radius:999px;padding:5px 14px;font-size:15px;font-weight:700;margin-bottom:10px}
+  .early-notice strong{color:var(--navy)}
+
   /* Hero */
   .hero{background:var(--navy);color:#fff}
   .hero-photo{max-width:1600px;margin:0 auto;overflow:hidden;line-height:0}
