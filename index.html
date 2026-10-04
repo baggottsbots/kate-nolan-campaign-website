@@ -363,6 +363,19 @@
 
 <main id="main">
 
+<section class="early-notice" aria-labelledby="early-voting-title">
+  <div class="wrap early-notice-in">
+    <div>
+      <span class="early-count" id="early-countdown">Early voting begins October 19</span>
+      <h2 id="early-voting-title">Early voting: October 19–31, 2026</h2>
+      <p>For the November 3, 2026 Statewide General Election</p>
+      <p><strong>Monday, October 19 – Saturday, October 31</strong><br>8:30 a.m. – 6:00 p.m., Monday–Saturday. Closed Sundays and legal holidays.</p>
+      <p>Bring your Photo ID (or voter registration card if you do not have a Photo ID).</p>
+    </div>
+    <a class="btn navy sm" href="https://www.beaufortcountysc.gov/vote/Early%20Voting%20Information.html" target="_blank" rel="noopener">Early voting information</a>
+  </div>
+</section>
+
 <section class="hero" id="top" data-section="hero">
   <div class="hero-photo">
     <img src="https://paymegpt.com/objects/quick-uploads/2/c199c960557b1ba9.jpg" width="1600" height="900" alt="Kate Nolan for Beaufort County School Board, District 8. Kate stands under a live oak with her husband and two children walking behind her. Strong Schools, Brighter Tomorrows.">
@@ -608,6 +621,25 @@
   } else {
     targets.forEach(function(t){ t.classList.add('in'); });
   }
+
+  /* Early voting countdown, counted in Eastern time */
+  function updateEarlyCountdown(){
+    var parts=new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
+    var date={};
+    parts.forEach(function(part){ date[part.type]=part.value; });
+    var today=Date.UTC(+date.year,+date.month-1,+date.day);
+    var days=Math.round((Date.UTC(2026,9,19)-today)/864e5);
+    var badge=d.getElementById('early-countdown');
+    if(days>0){
+      badge.textContent=days+(days===1?' day':' days')+' until early voting';
+    } else if(today<=Date.UTC(2026,9,31)){
+      badge.textContent='Early voting period: October 19–31';
+    } else {
+      badge.textContent='Early voting has ended';
+    }
+  }
+  updateEarlyCountdown();
+  setInterval(updateEarlyCountdown,60000);
 
   /* Days until Election Day, counted in Eastern time */
   try{
