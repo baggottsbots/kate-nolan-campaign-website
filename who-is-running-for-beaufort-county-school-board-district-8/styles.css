@@ -192,6 +192,9 @@
   .foot nav a:hover{color:var(--gold)}
   .legal{margin-top:26px;padding-top:20px;border-top:1px solid rgba(125,188,232,.22);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
   .paid{display:inline-block;border:1px solid rgba(185,200,227,.55);padding:6px 12px;border-radius:4px;color:#dbe7f7}
+  .foot .contact{margin-top:26px;color:#dbe7f7}
+  .foot .contact a{font-weight:600;color:#fff;text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:4px}
+  .foot .contact a:hover{color:var(--gold)}
 
   /* Mobile action bar */
   .bar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;align-items:center;justify-content:space-between;gap:12px;background:var(--navy);color:#fff;padding:10px 14px calc(10px + env(safe-area-inset-bottom));box-shadow:0 -8px 24px rgba(8,23,51,.28);transform:translateY(110%);transition:transform .35s var(--ease)}
